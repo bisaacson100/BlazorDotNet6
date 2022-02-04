@@ -1,0 +1,38 @@
+﻿@page "/download"
+@using System.IO
+@inject IJSRuntime JS
+
+<h3>Download</h3>
+
+<button @onclick="DownloadFileFromStream">Download File From Stream</button>
+
+<button @onclick="DownloadFileFromURL">Download File From URL</button>
+
+@code {
+
+        private Stream GetFileStream()
+        {
+            var randomBinaryData = new byte[50 * 1024];
+            var fileStream = new MemoryStream(randomBinaryData);
+
+            return fileStream;
+        }
+
+        private async Task DownloadFileFromStream()
+        {
+            var fileStream = GetFileStream();
+            var fileName = "log.bin";
+
+            using var streamRef = new DotNetStreamReference(stream: fileStream);
+
+            await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+        }
+
+        private async Task DownloadFileFromURL()
+        {
+            var fileURL = "https://picsum.photos/id/237/200/300";
+            var fileName = "cute-dog.jpg";
+            await JS.InvokeVoidAsync("triggerFileDownload", fileName, fileURL);
+        }
+
+}

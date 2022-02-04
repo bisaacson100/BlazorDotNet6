@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "f94e183f-ae1c-4c77-a2c4-c94f1ad7e4b9": {
+      "ProjectGuid": "f94e183f-ae1c-4c77-a2c4-c94f1ad7e4b9",
+      "DisplayName": "BlazorDotNet6.Client",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
